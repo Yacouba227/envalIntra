@@ -32,7 +32,7 @@
                 </li>
                 <div class="bas">
                     <li>
-                        <a href="#"><i class="fa-solid fa-gear"></i><span>Paramètre Compte</span></a>
+                        <a href="parametreDeCompte.html"><i class="fa-solid fa-gear"></i><span>Paramètre Compte</span></a>
                     </li>
                     <li>
                         <a href="index.html"><i class="fa-solid fa-arrow-right-from-bracket"></i><span>Déconnexion</span></a>
@@ -59,90 +59,28 @@
                     <div class="h-f" style="margin: auto;">
                         <h3 id="prepa">Suivi des échantillons</h3>
                     </div>
+                    <div class="rech-in"><i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="search" id="inputValue">
+                       </div>
                 </div>
                 <table style="width: calc(95%); margin: auto;">
-                    <tbody>
+                    <thead id="cmd">
                         <tr>
-                            <td>Lot</td>
-                            <td>Etat</td>
-                            <td>Date</td>
-                            <td>Rapport</td>
-                            <td>Cliquer pour voir</td>
+                            <th id="filterIcon">Lot <span class="iconsCache"><i class="fa-solid fa-arrow-down-z-a"></i></span></th>
+                            <th>Etat <span class="iconsCache"><i class="fa-solid fa-arrow-down-z-a"></i></span></th>
+                            <th>Date prèvue <span class="iconsCache"><i class="fa-solid fa-arrow-down-z-a"></i></span></th>
+                            <th>Rapport <span class="iconsCache"><i class="fa-solid fa-arrow-down-z-a"></i></span></th>
+                            <th>Cliquer pour voir le raport <span class="iconsCache"><i class="fa-solid fa-arrow-down-z-a"></i></span></th>
                         </tr>
-                        <tr>
-                            <td>TE202303001</td>
-                            <td>Reçu</td>
-                            <td>12/03/2023</td>
-                            <td>Non disponible</td>
-                            <td><a href="suividetail.html"><button>Voir</button></a></td>
-                        </tr>
-                        <tr>
-                            <td>TE202303001</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><a href="suividetail.html"><button>Voir</button></a></td>
-                        </tr>
-                        <tr>
-                            <td>TE202303001</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><a href="suividetail.html"><button>Voir</button></a></td>
-                        </tr>
-                        <tr>
-                            <td>Carbonate</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><a href="suividetail.html"><button>Voir</button></a></td>
-                        </tr>
-                        <tr>
-                            <td>Chlorure</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><a href="suividetail.html"><button>Voir</button></a></td>
-                        </tr>
-                        <tr>
-                            <td>CO2 libre</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><a href="suividetail.html"><button>Voir</button></a></td>
-                        </tr>
-                        <tr>
-                            <td>Condictivite électrique</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><a href="suividetail.html"><button>Voir</button></a></td>
-                        </tr>
-                        <tr>
-                            <td>pH/Teùperature</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><a href="suividetail.html"><button>Voir</button></a></td>
-                        </tr>
-                        <tr>
-                            <td>Couleur brute</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><a href="suividetail.html"><button>Voir</button></a></td>
-                        </tr>
-                        <tr>
-                            <td style="border-bottom: none;">Cyanure libre</td>
-                            <td style="border-bottom: none;"></td>
-                            <td style="border-bottom: none;"></td>
-                            <td style="border-bottom: none;"></td>
-                            <td style="border-bottom: none;"></td>
-                        </tr>
+                    </thead>
+                    <tbody id="suiviTbody">
+                        
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+    <script src="objet.js"></script>
+    <script src="suivi.js"></script>
 </body>
 </html>

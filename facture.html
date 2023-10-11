@@ -32,7 +32,7 @@
                 </li>
                 <div class="bas">
                     <li>
-                        <a href="#"><i class="fa-solid fa-gear"></i><span>Paramètre Compte</span></a>
+                        <a href="parametreDeCompte.html"><i class="fa-solid fa-gear"></i><span>Paramètre Compte</span></a>
                     </li>
                     <li>
                         <a href="index.html"><i class="fa-solid fa-arrow-right-from-bracket"></i><span>Déconnexion</span></a>
@@ -61,75 +61,26 @@
                     </div>
                     <div class="rech-in">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="search">
+                        <input type="search" id="inputValue">
                     </div>
                 </div>
                 <table style="width: calc(95%); margin: auto;">
-                    <tbody>
+                    <thead>
                         <tr>
-                            <td>Facture</td>
-                            <td>Laboratoire</td>
-                            <td>Date</td>
-                            <td>Cliquer pour voir</td>
+                            <th>Facture <span class="iconsCache"><i class="fa-solid fa-arrow-down-z-a"></i></span></th>
+                            <th>Laboratoire <span class="iconsCache"><i class="fa-solid fa-arrow-down-z-a"></i></span></th>
+                            <th>Date <span class="iconsCache"><i class="fa-solid fa-arrow-down-z-a"></i></span></th>
+                            <th>Cliquer pour voir <span class="iconsCache"><i class="fa-solid fa-arrow-down-z-a"></i></span></th>
                         </tr>
-                        <tr>
-                            <td>000112</td>
-                            <td>Enval</td>
-                            <td>23/03/2023</td>
-                            <td><a href="#"><button>Voir</button></a></td>
-                        </tr>
-                        <tr>
-                            <td>000112</td>
-                            <td></td>
-                            <td></td>
-                            <td><a href="#"><button>Voir</button></a></td>
-                        </tr>
-                        <tr>
-                            <td>000112</td>
-                            <td></td>
-                            <td></td>
-                            <td><a href="#"><button>Voir</button></a></td>
-                        </tr>
-                        <tr>
-                            <td>000112</td>
-                            <td></td>
-                            <td></td>
-                            <td><a href="#"><button>Voir</button></a></td>
-                        </tr>
-                        <tr>
-                            <td>000112</td>
-                            <td></td>
-                            <td></td>
-                            <td><a href="#"><button>Voir</button></a></td>
-                        </tr>
-                        <tr>
-                            <td>000112</td>
-                            <td></td>
-                            <td></td>
-                            <td><a href="#"><button>Voir</button></a></td>
-                        </tr>
-                        <tr>
-                            <td>000112</td>
-                            <td></td>
-                            <td></td>
-                            <td><a href="#"><button>Voir</button></a></td>
-                        </tr>
-                        <tr>
-                            <td>000112</td>
-                            <td></td>
-                            <td></td>
-                            <td><a href="#"><button>Voir</button></a></td>
-                        </tr>
-                        <tr>
-                            <td style="border-bottom: none;"></td>
-                            <td style="border-bottom: none;"></td>
-                            <td style="border-bottom: none;"></td>
-                            <td style="border-bottom: none;"></td>
-                        </tr>
+                    </thead>
+                    <tbody id="factureTbody">
+                       
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+    <script src="objet.js"></script>
+    <script src="facture.js"></script>
 </body>
 </html>

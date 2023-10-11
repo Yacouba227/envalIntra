@@ -1,4 +1,6 @@
 body{
+    display: flex;
+    flex-direction: column;
     padding: 0;
     margin: 0;
     background-color: rgb(183,219,207);
@@ -901,4 +903,262 @@ textarea:hover{
 }
 textarea {
   resize: none;
+}
+
+
+thead tr{
+    background-color: #1A98A8;
+    height: 50px;
+    color: white;
+    font-size: 18px;
+    align-items: center;
+}
+thead tr th
+{
+    font-size: 15px;
+    width: calc(100%/4);
+    text-align: center;
+}
+#cmd tr th
+{
+    width: calc(100%/5);
+    text-align: center;
+}
+.iconsCache{
+    display: none;
+}
+.contenuCompte{
+    background-color: white;
+    width: 98%;
+    border-radius: 12px;
+}
+.contenuCompte .link{
+    align-items: center;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.contenuCompte .link span a{
+    text-decoration: none;
+    font-size: 18px;
+    color: #79B51C;
+    margin-left: 1rem;
+}
+#btnSpan{
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+}
+.link #modifiPassword{
+    height: 45px;
+    background-color:  #157987;
+    border: 1px solid #157987;
+    width: 40%;
+    color: white;
+    font-size: 18px;
+    border-radius: 8px;
+}
+.link #modifiPassword:hover{
+    background-color: transparent;
+    color: #157987;
+}
+.link #supprimCompt{
+    height: 45px;
+    width: 40%;
+    background-color: red;
+    border: 1px solid red;
+    color: white;
+    font-size: 18px;
+    border-radius: 8px;
+}
+.link #supprimCompt:hover{
+    background-color: transparent;
+    color: red;
+}
+.mdfProfil{
+    display: flex;
+    justify-content: space-around;
+    width: 92%;
+    margin:4rem auto;
+}
+.mdfProfil .profil{
+    width: 60%;
+}
+.mdfProfil .avatar{
+    width: 35%;
+}
+.profil input{
+    width: 94%;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+    background-color: #f5eded;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    padding-left: 16px;
+}
+.profil textarea{
+    width: 94%;
+    height: 250px;
+    border-radius: 8px;
+    border: none;
+    background-color: #f5eded;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    padding-left: 16px;
+    padding-top: 16px;
+}
+.profil #sendMessage{
+    width: 98%;
+    height: 50px;
+    border-radius: 8px;
+    border: none;
+    background-color: #157987;
+    color: white;
+    font-size: 20px;
+    margin-top: 8px;
+    margin-bottom: 40px;
+}
+.profil #sendMessage:hover{
+    background-color: #08df4c;
+    color: #000;
+}
+.profil span{
+    font-size: 20px;
+}
+.avatar .image img{
+    border-radius: 50%;
+    height: 320px;
+    width: 100%;
+}
+.btnAvatar #modifiPhoto{
+    background-color: #157987;
+    border: 1px solid #157987;
+    color: white;
+    height: 40px;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 20px;
+    margin-top: 1rem;
+}
+.btnAvatar #modifiPhoto:hover{
+    background-color: transparent;
+    color: #157987;
+}
+.btnAvatar #supprimphoto{
+    background-color: red;
+    border: 1px solid red;
+    color: white;
+    height: 40px;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 20px;
+    margin-top: 1rem;
+}
+.btnAvatar #supprimphoto:hover{
+    background-color: transparent;
+    color: red;
+}
+/* Modifier le mot de passe */
+.mdpSetting{
+    background-color: white;
+    position: absolute;
+    border: 2px solid #157987;
+    border-radius: 12px;
+    width: 360px;
+    top: 10%;
+    left: 40%;
+    display: none;
+}
+.mdpSettingM{
+    background-color: white;
+    position: absolute;
+    border: 2px solid #157987;
+    border-radius: 12px;
+    width: 360px;
+    top: 10%;
+    left: 40%;
+    display: block;
+}
+.mdpSetting input{
+    width: 88%;
+    height: 40px;
+    border-radius: 8px;
+    background-color: #f5eded;
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 12px;
+    padding-left: 12px;
+}
+.mdpSetting #envoyerNvMdp{
+    width: 92%;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid #157987;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 13px;
+    font-size: 22px;
+    color: white;
+    background-color: #157987;
+}
+.mdpSetting #envoyerNvMdp:hover{
+    background-color: transparent;
+    color: #157987;
+}
+.mdpSetting span{
+    font-size: 20px;
+    margin-left: 13px;
+}
+.mdpSetting h1{
+    background-color: #157987;
+    color: white;
+    padding-top: 12px;
+    height: 50px;
+    text-align: center;
+    font-size: 30px;
+    align-items: center;
+    border-radius: 12px 12px 0 0;
+    margin-top: -0.1rem;
+}
+/* Notification */
+.notification{
+    position: absolute;
+    background-color: white;
+    top: 4%;
+    right: 4%;
+    width: 300px;
+    text-align: center;
+    height: 120px;
+    border-radius: 8px;
+    border: 2px solid #157987;
+    display: none;
+}
+.notificationM{
+    position: absolute;
+    background-color: white;
+    top: 4%;
+    right: 4%;
+    width: 300px;
+    text-align: center;
+    height: 120px;
+    border-radius: 8px;
+    border: 2px solid #157987;
+    display: block;
+}
+.notification h1{
+    background-color: #157987;
+    color: white;
+    padding-top: 8px;
+    height: 40px;
+    text-align: center;
+    font-size: 28px;
+    align-items: center;
+    border-radius: 8px 8px 0 0;
+    margin-top: -0.1rem;
+}
+.notification span{
+    color: #08df4c;
+    font-size: 20px;
 }
