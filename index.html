@@ -10,19 +10,20 @@
 
   <body>
     <div class="contenuIndex">
-      <form action="dashboard.html">
+      <form>
         <div class="logoImg">
             <img src="Enval logo.png" alt="" />
         </div>
-        <input type="email" placeholder="email" id="conexEmailValue"/><br>
+        <input type="text" placeholder="Identifiant" id="conexEmailValue"/><br>
         <input type="password" placeholder="password" id="conexPasswordValue"/><br><br>
         <span><a href="#">Forgot your password</a></span><br>
         <button id="connexionValid">Connexion</button>
       </form>
     </div>
     <div class="notification">
-        <h1>Notification</h1>
-        <span>Message</span>
+        <h1 id="h1notification">Notification</h1>
+        <span id="message">Message</span>
     </div>
+    <script src="index.js"></script>
   </body>
 </html>
