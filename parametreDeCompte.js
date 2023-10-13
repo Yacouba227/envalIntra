@@ -78,29 +78,88 @@ sendMessage.addEventListener("click", () => {
 });
 
 // Pour la photo
-const avatarProfil = document.getElementById("avatarProfil");
+//const mieu = document.getElementById('mieu');
+const essaie = document.querySelector('.essaie');
 const modifiPhoto = document.getElementById("input-file");
 const supprimphoto = document.getElementById('supprimphoto');
 const image = document.querySelector('.image');
-console.log('====================================');
-console.log(modifiPhoto);
-console.log('====================================');
-console.log('====================================');
-console.log(supprimphoto);
-console.log('====================================');
-function modifiSupprume(){
 
-modifiPhoto.addEventListener('change', () =>{
-  let reader = new FileReader();
-  reader.readAsDataURL(modifiPhoto.files[0]);
-  reader.addEventListener('load', () =>{
-    image.innerHTML = `<img src="${reader.result}" alt="" id="avatarProfil" />`;
-  })
-})
-supprimphoto.addEventListener('click', () =>{
-  
-})
+function saveImageToLocalStorage(imageData) {
+  const userPhotos = JSON.parse(localStorage.getItem("photoData")) || [];
 
+  // Add the new image data to the userPhotos array
+  userPhotos.push({ imageData });
 
+  // Save the updated userPhotos array back to local storage
+  localStorage.setItem("photoData", JSON.stringify(userPhotos));
 }
-modifiSupprume();
+
+function displayImageFromLocalStorage() {
+  const userPhotos = JSON.parse(localStorage.getItem("photoData")) || [];
+
+  if (userPhotos.length > 0) {
+    // Retrieve the latest image data from the array
+    const latestImageData = userPhotos[userPhotos.length - 1].imageData;
+
+    // Display the image
+    image.innerHTML = `<img src="${latestImageData}" alt="Avatar" id="avatarProfil" />`;
+    essaie.innerHTML = `<img src="${latestImageData}" alt="Avatar" id="mieu" />`;
+  }
+}
+
+modifiPhoto.addEventListener('change', () => {
+  const file = modifiPhoto.files[0];
+
+  if (file) {
+    const reader = new FileReader();
+
+    reader.onload = function () {
+      const imageData = reader.result;
+    essaie.innerHTML = `<img src="${imageData}" alt="Avatar" id="mieu" />`;
+    image.innerHTML = `<img src="${imageData}" alt="Avatar" id="avatarProfil" />`;
+
+      // Save the image data to local storage
+      saveImageToLocalStorage(imageData);
+    };
+
+    reader.readAsDataURL(file);
+  }
+});
+
+
+function removeImageFromLocalStorage() {
+  const userPhotos = JSON.parse(localStorage.getItem("photoData")) || [];
+
+  if (userPhotos.length > 0) {
+    // Remove the latest image data from the array
+    userPhotos.pop();
+
+    // Save the updated userPhotos array back to local storage
+    localStorage.setItem("photoData", JSON.stringify(userPhotos));
+  }
+}
+
+supprimphoto.addEventListener('click', () => {
+  // Remove the image from local storage
+  removeImageFromLocalStorage();
+
+  // Clear the image on the webpage
+  image.innerHTML = '';
+  essaie.innerHTML = '';
+
+  // Display a message to confirm the image removal
+  const notification = document.querySelector(".notification");
+  const notification1 = document.getElementById("notification1");
+  const message = document.getElementById("message");
+  notification.style.display = "block";
+  notification1.textContent = "Image supprimée";
+  message.textContent = "L'image a été supprimée avec succès";
+  setTimeout(() => {
+    notification.style.display = "none";
+  }, 3000);
+  location.reload();
+});
+
+
+// Display the latest saved image when the page loads
+displayImageFromLocalStorage();

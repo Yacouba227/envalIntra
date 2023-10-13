@@ -215,8 +215,12 @@ form span a {
 .nav-bar img {
   height: 50px;
   width: 50px;
-  border-radius: 70%;
-  margin-right: 2%;
+  border-radius: 50%;
+}
+.nav-bar .img {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
 }
 
 .rouge {
