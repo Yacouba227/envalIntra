@@ -1047,14 +1047,14 @@ thead tr th {
   height: 320px;
   width: 100%;
 }
-.btnAvatar #modifiPhoto {
+#modifiPhoto {
   background-color: #157987;
   border: 1px solid #157987;
   color: white;
   height: 40px;
+  font-size: 20px;
   width: 100%;
   border-radius: 8px;
-  font-size: 20px;
   margin-top: 1rem;
 }
 .btnAvatar #modifiPhoto:hover {
