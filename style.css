@@ -256,7 +256,6 @@ textarea:focus {
   background-color: white;
   border-radius: 12px;
   width: calc(99%);
-  height: 70vh;
 }
 .contenu-facture td {
   text-align: center;
