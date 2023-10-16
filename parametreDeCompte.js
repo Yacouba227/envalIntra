@@ -2,9 +2,6 @@ const modifiPassword = document.getElementById("modifiPassword");
 const supprimCompt = document.getElementById("supprimCompt");
 const mdpSetting = document.querySelector(".mdpSetting");
 const frm = document.getElementById("frm");
-const envoyerNvMdp = document.getElementById("envoyerNvMdp");
-const nouveauMdp = document.getElementById("nouveauMdp");
-const ancienMdp = document.getElementById("ancienMdp");
 const nomValue = document.getElementById("nomValue");
 const emailValue = document.getElementById("emailValue");
 const biographieValue = document.getElementById("biographieValue");
@@ -79,10 +76,10 @@ sendMessage.addEventListener("click", () => {
 
 // Pour la photo
 //const mieu = document.getElementById('mieu');
-const essaie = document.querySelector('.essaie');
+const essaie = document.querySelector(".essaie");
 const modifiPhoto = document.getElementById("input-file");
-const supprimphoto = document.getElementById('supprimphoto');
-const image = document.querySelector('.image');
+const supprimphoto = document.getElementById("supprimphoto");
+const image = document.querySelector(".image");
 
 function saveImageToLocalStorage(imageData) {
   const userPhotos = JSON.parse(localStorage.getItem("photoData")) || [];
@@ -107,7 +104,7 @@ function displayImageFromLocalStorage() {
   }
 }
 
-modifiPhoto.addEventListener('change', () => {
+modifiPhoto.addEventListener("change", () => {
   const file = modifiPhoto.files[0];
 
   if (file) {
@@ -115,8 +112,8 @@ modifiPhoto.addEventListener('change', () => {
 
     reader.onload = function () {
       const imageData = reader.result;
-    essaie.innerHTML = `<img src="${imageData}" alt="Avatar" id="mieu" />`;
-    image.innerHTML = `<img src="${imageData}" alt="Avatar" id="avatarProfil" />`;
+      essaie.innerHTML = `<img src="${imageData}" alt="Avatar" id="mieu" />`;
+      image.innerHTML = `<img src="${imageData}" alt="Avatar" id="avatarProfil" />`;
 
       // Save the image data to local storage
       saveImageToLocalStorage(imageData);
@@ -125,7 +122,6 @@ modifiPhoto.addEventListener('change', () => {
     reader.readAsDataURL(file);
   }
 });
-
 
 function removeImageFromLocalStorage() {
   const userPhotos = JSON.parse(localStorage.getItem("photoData")) || [];
@@ -139,13 +135,13 @@ function removeImageFromLocalStorage() {
   }
 }
 
-supprimphoto.addEventListener('click', () => {
+supprimphoto.addEventListener("click", () => {
   // Remove the image from local storage
   removeImageFromLocalStorage();
 
   // Clear the image on the webpage
-  image.innerHTML = '';
-  essaie.innerHTML = '';
+  image.innerHTML = "";
+  essaie.innerHTML = "";
 
   // Display a message to confirm the image removal
   const notification = document.querySelector(".notification");
@@ -160,6 +156,81 @@ supprimphoto.addEventListener('click', () => {
   location.reload();
 });
 
-
 // Display the latest saved image when the page loads
 displayImageFromLocalStorage();
+// Modification et confirmation du mot de passe
+
+// ...
+
+let objetUserRecup = JSON.parse(localStorage.getItem("userData")) || {};
+
+envoyerNvMdp.addEventListener("click", (event) => {
+  event.preventDefault();
+  modificationPassword();
+});
+
+function modificationPassword() {
+  let objetUserRecup = JSON.parse(localStorage.getItem("userData")) || {};
+  const ancienPassword = ancienMdp.value;
+  const newPassword = nouveauMdp.value;
+  const confirmPassword = confirmationMdp.value;
+  if (ancienPassword === objetUserRecup.password) {
+    if (newPassword === confirmPassword) {
+      // Update the password in the objetUserRecup object
+      objetUserRecup.password = newPassword;
+
+      // Update the password in local storage
+      localStorage.setItem("userData", JSON.stringify(objetUserRecup));
+
+      // Display a success notification
+      displaySuccessNotification("Mot de passe modifié avec succès");
+    } else {
+      displayErrorNotification("Le nouveau mot de passe et la confirmation ne correspondent pas");
+    }
+  } else{
+    displayErrorNotification("Ancien mot de passe incorrect");
+  }
+
+  // Reset the password input fields
+  ancienMdp.value = "";
+  nouveauMdp.value = "";
+  confirmationMdp.value = "";
+}
+
+// ...
+
+
+envoyerNvMdp.addEventListener("click", (event) => {
+  event.preventDefault();
+  modificationPassword();
+});
+
+function displaySuccessNotification(message) {
+  displayNotification("Succès", message);
+}
+
+function displayErrorNotification(message) {
+  displayNotification("Erreur", message);
+}
+
+function displayNotification(title, message) {
+  const notification = document.querySelector(".notification");
+  const notification1 = document.getElementById("notification1");
+  const messageElement = document.getElementById("message");
+
+  notification.style.display = "block";
+  notification1.textContent = title;
+  messageElement.textContent = message;
+
+  setTimeout(() => {
+    notification.style.display = "none";
+  }, 2500);
+}
+
+
+envoyerNvMdp.addEventListener("click", (event) => {
+  event.preventDefault();
+  modificationPassword();
+});
+
+

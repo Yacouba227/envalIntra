@@ -23,8 +23,8 @@ btnconnexionValid.addEventListener("click", (e) => {
   e.preventDefault();
   if (conexEmailValue.value != "" && conexPasswordValue.value != "") {
     if (
-      conexEmailValue.value == objetUser.prenom ||
-      conexPasswordValue.value == objetUser.password
+      conexEmailValue.value === objetUser.prenom &&
+      conexPasswordValue.value === objetUser.password
     ) {
       window.location.href = "dashboard.html";
       //   notification.style.display = "block";
