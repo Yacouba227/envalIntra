@@ -9,6 +9,8 @@ let compteur = 0;
 let user = {
   prenom: "yacoubou",
   password: "azerty",
+  email: "yacoubou@gmail.com",
+  biographie: "I am a hardCoder",
   question: "mouton",
 };
 // Vérification de la présence des données dans le stockage local

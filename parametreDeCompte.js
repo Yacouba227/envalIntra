@@ -20,35 +20,48 @@ frm.addEventListener("click", (e) => {
   }
 });
 
-let userProfil = [];
+
+let user = [];
 
 // Vérification de la présence des données dans le stockage local
-if (!localStorage.getItem("profilData")) {
-  localStorage.setItem("profilData", JSON.stringify(userProfil));
-}
-
-// Récupérez le tableau depuis le stockage local
-userProfil = JSON.parse(localStorage.getItem("profilData"));
+/* if (localStorage.getItem("userData")) {
+  user = JSON.parse(localStorage.getItem("userData"));
+} */
 
 function modifierProf() {
+  let essayer = JSON.parse(localStorage.getItem("userData"));
   const nom = nomValue.value;
   const email = emailValue.value;
   const biographie = biographieValue.value;
 
-  // Ajoutez la nouvelle tâche au tableau userProfil
-  userProfil.push({
-    nomProf: nom,
+  // Assurez-vous que user est un tableau
+  if (!Array.isArray(user)) {
+    user = [];
+  }
+
+  // Ajoutez la nouvelle tâche au tableau user
+  user.push({
+    prenom: nom,
+    password: essayer.password,
     emailPro: email,
     biographieProf: biographie,
   });
+  
   // Sauvegardez le tableau mis à jour dans le localStorage
-  localStorage.setItem("profilData", JSON.stringify(userProfil));
+  localStorage.setItem("userData", JSON.stringify(user));
 
   // Réinitialisez les champs de saisie
-  nomValue.value = "";
+  /* nomValue.value = "";
   emailValue.value = "";
-  biographieValue.value = "";
+  biographieValue.value = ""; */
 }
+let essayer = JSON.parse(localStorage.getItem("userData"));
+console.log('*****************************************');
+console.log(essayer);
+console.log('*****************************************');
+nomValue.value = essayer.prenom;
+emailValue.value = essayer.email;
+biographieValue.value = essayer.biographie; 
 notification1.textContent = "";
 message.textContent = "";
 sendMessage.addEventListener("click", () => {
@@ -198,12 +211,6 @@ function modificationPassword() {
 }
 
 // ...
-
-
-envoyerNvMdp.addEventListener("click", (event) => {
-  event.preventDefault();
-  modificationPassword();
-});
 
 function displaySuccessNotification(message) {
   displayNotification("Succès", message);
