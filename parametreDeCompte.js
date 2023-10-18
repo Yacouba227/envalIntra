@@ -21,71 +21,50 @@ frm.addEventListener("click", (e) => {
 });
 
 
-let user = [];
+
+
 
 // Vérification de la présence des données dans le stockage local
-/* if (localStorage.getItem("userData")) {
-  user = JSON.parse(localStorage.getItem("userData"));
-} */
-
-function modifierProf() {
-  let essayer = JSON.parse(localStorage.getItem("userData"));
-  const nom = nomValue.value;
-  const email = emailValue.value;
-  const biographie = biographieValue.value;
-
-  // Assurez-vous que user est un tableau
-  if (!Array.isArray(user)) {
-    user = [];
-  }
-
-  // Ajoutez la nouvelle tâche au tableau user
-  user.push({
-    prenom: nom,
-    password: essayer.password,
-    emailPro: email,
-    biographieProf: biographie,
-  });
-  
-  // Sauvegardez le tableau mis à jour dans le localStorage
-  localStorage.setItem("userData", JSON.stringify(user));
-
-  // Réinitialisez les champs de saisie
-  /* nomValue.value = "";
-  emailValue.value = "";
-  biographieValue.value = ""; */
+if (!localStorage.getItem("userData")) {
+  localStorage.setItem("userData", JSON.stringify({}));
 }
-let essayer = JSON.parse(localStorage.getItem("userData"));
-console.log('*****************************************');
-console.log(essayer);
-console.log('*****************************************');
-nomValue.value = essayer.prenom;
-emailValue.value = essayer.email;
-biographieValue.value = essayer.biographie; 
-notification1.textContent = "";
-message.textContent = "";
+
+let userProfil = JSON.parse(localStorage.getItem("userData"));
+
+// Afficher les données utilisateur si elles existent
+if (userProfil.prenom) {
+  nomValue.value = userProfil.prenom;
+  emailValue.value = userProfil.email;
+  biographieValue.value = userProfil.biographie;
+}
+
 sendMessage.addEventListener("click", () => {
-  if (
-    nomValue.value === "" ||
-    emailValue.value === "" ||
-    biographieValue.value === ""
-  ) {
+  if (nomValue.value === "" || emailValue.value === "" || biographieValue.value === "") {
     notification.style.display = "block";
     notification1.textContent = "Message";
-    message.textContent = "Veuillez remplire ces differents champs de saie";
+    message.textContent = "Veuillez remplir tous les champs.";
     setTimeout(() => {
       notification.style.display = "none";
     }, 3000);
   } else {
+    userProfil.prenom = nomValue.value;
+    userProfil.email = emailValue.value;
+    userProfil.biographie = biographieValue.value;
+    
+    localStorage.setItem("userData", JSON.stringify(userProfil));
+    
     notification.style.display = "block";
     notification1.textContent = "Données personnelles";
-    message.textContent = "La mise à jour a été effectuée avec success";
+    message.textContent = "La mise à jour a été effectuée avec succès";
     setTimeout(() => {
       notification.style.display = "none";
     }, 3000);
   }
-  modifierProf();
 });
+
+
+
+
 
 // Pour la photo
 //const mieu = document.getElementById('mieu');
@@ -209,6 +188,14 @@ function modificationPassword() {
   nouveauMdp.value = "";
   confirmationMdp.value = "";
 }
+
+supprimCompt.addEventListener("click", () => {
+  // Supprimer le compte de l'utilisateur et déconnecter
+  localStorage.clear();
+
+  // Rediriger l'utilisateur vers la page de connexion (index.html)
+  window.location.href = "index.html";
+});
 
 // ...
 

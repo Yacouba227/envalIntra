@@ -5,7 +5,7 @@ const notification = document.querySelector(".notification");
 const h1notification = document.getElementById("h1notification");
 const message = document.getElementById("message");
 let compteur = 0;
-
+/* 
 let user = {
   prenom: "yacoubou",
   password: "azerty",
@@ -18,7 +18,24 @@ if (!localStorage.getItem("userData")) {
   localStorage.setItem("userData", JSON.stringify(user));
 }
 // Récupération des données du stockage local et affichage initial
-let objetUser = JSON.parse(localStorage.getItem("userData"));
+let objetUser = JSON.parse(localStorage.getItem("userData")); */
+
+let user = JSON.parse(localStorage.getItem("userData")) || {
+  prenom: "yacoubou",
+  password: "azerty",
+  email: "yacoubou@gmail.com",
+  biographie: "I am a hardCoder",
+  question: "mouton",
+};
+
+// Vérification de la présence des données dans le stockage local
+if (!localStorage.getItem("userData")) {
+  localStorage.setItem("userData", JSON.stringify(user));
+}
+/********************************************************** */
+
+// Récupération des données du stockage local et affichage initial
+const objetUser = JSON.parse(localStorage.getItem("userData"));
 
 h1notification.textContent = "";
 btnconnexionValid.addEventListener("click", (e) => {
