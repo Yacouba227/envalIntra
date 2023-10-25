@@ -36,7 +36,7 @@ if (!localStorage.getItem("userData")) {
 
 // Récupération des données du stockage local et affichage initial
 const objetUser = JSON.parse(localStorage.getItem("userData"));
-
+const timerBlock = document.querySelector('.timerBlock');
 h1notification.textContent = "";
 btnconnexionValid.addEventListener("click", (e) => {
   e.preventDefault();
@@ -72,12 +72,17 @@ btnconnexionValid.addEventListener("click", (e) => {
         if (info === "mouton") {
           window.location.href = "dashboard.html";
         }
-        notification.style.display = "block";
+        /* notification.style.display = "block";
         h1notification.textContent = "Compte bloqué";
         message.textContent = "Oups !!! Votre compte est temporairement bloqué";
         setTimeout(() => {
           notification.style.display = "none";
-        }, 3000);
+        }, 3000); */
+          timerBlock.style.display = "block";
+          setTimeout(() => {
+          timerBlock.style.display = "none";
+        }, 30000);
+        tempsBlock();
         btnconnexionValid.disabled = true;
         conexPasswordValue.disabled = true;
         conexEmailValue.disabled = true;
@@ -89,6 +94,30 @@ btnconnexionValid.addEventListener("click", (e) => {
     message.textContent = "Veuillez les champs de saisi";
     setTimeout(() => {
       notification.style.display = "none";
-    }, 3000);
+    }, 300000);
   }
 });
+function tempsBlock() {
+  const timer = document.getElementById("timer");
+  const stargMinutes = 5;
+  let temps = stargMinutes * 60;
+  setInterval(updateCountdown, 1000);
+  function updateCountdown() {
+    //const heur = Math.floor(temps/3600);
+    const minute = Math.floor(temps / 60);
+    let second = temps % 60;
+    second = second < 10 ? "0" + second : second;
+    //minute = minute < 10 ? '0' + minute : minute;
+    timer.innerHTML = `00:0${minute}:${second}`;
+    temps--;
+  }
+  /* const interval = setInterval(function(){
+    temps--;
+    //timer.textContent = formatTime(temps);
+    if (temps <= 0) {
+      clearInterval(interval);
+      timer.textContent = '00:00:00'
+    }
+  }, 1000) */
+}
+

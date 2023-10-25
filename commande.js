@@ -1,4 +1,5 @@
 const commandeTbody = document.getElementById("commandeTbody");
+console.log(commandeTableau);
 commandeTableau.forEach((item) => {
   commandeTbody.innerHTML += `
   <tr>
