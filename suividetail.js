@@ -1,3 +1,9 @@
+const getLocalData = () => JSON.parse(localStorage.getItem("connect"));
+//if(!getLocalData()) location.href = "/dashboard.html"
+if (!getLocalData()) {
+  location.href = "/index.html";
+}
+
 let nomDossier = JSON.parse(localStorage.getItem('nom'));
 const spanEntete = document.getElementById('spanEntete');
 const spanBas = document.getElementById('spanBas');

@@ -45,6 +45,7 @@ btnconnexionValid.addEventListener("click", (e) => {
       conexEmailValue.value === objetUser.prenom &&
       conexPasswordValue.value === objetUser.password
     ) {
+      localStorage.setItem("connect", true);
       window.location.href = "dashboard.html";
       //   notification.style.display = "block";
       //   h1notification.textContent = "Connexion";
@@ -81,11 +82,12 @@ btnconnexionValid.addEventListener("click", (e) => {
           timerBlock.style.display = "block";
           setTimeout(() => {
           timerBlock.style.display = "none";
-        }, 30000);
+          btnconnexionValid.disabled = false;
+        conexPasswordValue.disabled = false;
+        conexEmailValue.disabled = false;
+        }, 300000);
         tempsBlock();
-        btnconnexionValid.disabled = true;
-        conexPasswordValue.disabled = true;
-        conexEmailValue.disabled = true;
+        
       }
     }
   } else {
@@ -94,7 +96,7 @@ btnconnexionValid.addEventListener("click", (e) => {
     message.textContent = "Veuillez les champs de saisi";
     setTimeout(() => {
       notification.style.display = "none";
-    }, 300000);
+    }, 3000);
   }
 });
 function tempsBlock() {
@@ -102,6 +104,9 @@ function tempsBlock() {
   const stargMinutes = 5;
   let temps = stargMinutes * 60;
   setInterval(updateCountdown, 1000);
+  btnconnexionValid.disabled = true;
+        conexPasswordValue.disabled = true;
+        conexEmailValue.disabled = true;
   function updateCountdown() {
     //const heur = Math.floor(temps/3600);
     const minute = Math.floor(temps / 60);
@@ -121,3 +126,23 @@ function tempsBlock() {
   }, 1000) */
 }
 
+/* Configuration de la redurection des pages */
+if (JSON.parse(localStorage.getItem("connect")) == null)
+      localStorage.setItem("connect", false);
+    //const connexionEl = document.querySelector("#connexion");
+const getLocalData = () => JSON.parse(localStorage.getItem("connect"));
+   /*  const changeTheText = () => {
+      const connexion = getLocalData();
+      if (connexion) connexionEl.textContent = "Connect";
+      else connexionEl.textContent = "Disconnect";
+    };
+
+    changeTheText();
+
+    const connect = () => {
+      const connexion = getLocalData();
+      changeTheText();
+      localStorage.setItem("connect", !connexion);
+    };
+
+    connexionEl.addEventListener("click", connect); */

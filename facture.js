@@ -1,3 +1,9 @@
+const getLocalData = () => JSON.parse(localStorage.getItem("connect"));
+//if(!getLocalData()) location.href = "/dashboard.html"
+if (!getLocalData()) {
+  location.href = "/index.html";
+}
+
 const factureTbody = document.getElementById("factureTbody");
 factureTableau.forEach((item) => {
   factureTbody.innerHTML += `

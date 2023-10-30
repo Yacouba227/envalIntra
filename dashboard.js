@@ -1,4 +1,9 @@
-const essaie = document.querySelector('.essaie');
+const getLocalData = () => JSON.parse(localStorage.getItem("connect"));
+//if(!getLocalData()) location.href = "/dashboard.html"
+if (!getLocalData()) {
+  location.href = "/index.html";
+}
+const essaie = document.querySelector(".essaie");
 function displayImageFromLocalStorage() {
   const userPhotos = JSON.parse(localStorage.getItem("photoData")) || [];
 
@@ -12,3 +17,9 @@ function displayImageFromLocalStorage() {
   }
 }
 displayImageFromLocalStorage();
+
+/* const getLocalData = () => JSON.parse(localStorage.getItem("connect"));
+    //if(!getLocalData()) location.href = "/dashboard.html"
+    if (!getLocalData()) {
+      location.href = "/index.html"
+    } */
