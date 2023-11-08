@@ -23,3 +23,12 @@ displayImageFromLocalStorage();
     if (!getLocalData()) {
       location.href = "/index.html"
     } */
+const sideBar = document.querySelector('.side-bar');
+const hamburger = document.getElementById('hamburger');
+ hamburger.addEventListener('click', (e) => {
+  if (e.target) {
+    console.log('====================================');
+    console.log(sideBar);
+    console.log('====================================');
+  }
+ })
